@@ -23,11 +23,11 @@ get '/token' do
   # Create a unique ID for the currently connecting device
   endpoint_id = "TwilioDemoApp:#{identity}:#{device_id}"
 
-  # Create an Access Token for IP messaging usage
+  # Create an Access Token for Sync usage
   token = Twilio::JWT::AccessToken.new ENV['TWILIO_ACCOUNT_SID'],
     ENV['TWILIO_API_KEY'], ENV['TWILIO_API_SECRET'], 3600, identity
 
-  # Create IP Messaging grant for our token
+  # Create Sync grant for our token
   grant = Twilio::JWT::AccessToken::SyncGrant.new
   grant.service_sid = ENV['TWILIO_SYNC_SERVICE_SID']
   grant.endpoint_id = endpoint_id
