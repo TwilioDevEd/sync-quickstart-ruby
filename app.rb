@@ -19,7 +19,7 @@ get '/token' do
 
   # Create an Access Token for IP messaging usage
   token = Twilio::JWT::AccessToken.new ENV['TWILIO_ACCOUNT_SID'],
-    ENV['TWILIO_API_KEY'], ENV['TWILIO_API_SECRET'], 3600, identity
+    ENV['TWILIO_API_KEY'], ENV['TWILIO_API_SECRET'], ttl: 3600, identity: identity
 
   # Create IP Messaging grant for our token
   grant = Twilio::JWT::AccessToken::SyncGrant.new
